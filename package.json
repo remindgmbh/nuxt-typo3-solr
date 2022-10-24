@@ -1,0 +1,51 @@
+{
+  "name": "@remindgmbh/nuxt-typo3-solr",
+  "version": "1.0.0",
+  "author": "David Mellen <d.mellen@remind.de>",
+  "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/remindgmbh/nuxt-typo3-solr"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
+    }
+  },
+  "main": "./dist/module.cjs",
+  "types": "./dist/types.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepack": "nuxt-module-build",
+    "dev": "nuxi dev playground",
+    "build": "nuxi build playground",
+    "lint:script": "eslint --ext \".js,.ts,.vue\" .",
+    "lint:style": "stylelint \"**/*.{vue,[s]css}\"",
+    "lint": "yarn lint:script && yarn lint:style",
+    "prepare": "nuxt-module-build --stub && nuxi prepare playground",
+    "preview": "nuxi preview playground"
+  },
+  "dependencies": {
+    "@nuxt/kit": "^3.0.0-rc.12",
+    "defu": "^6.1.0"
+  },
+  "devDependencies": {
+    "@nuxt/module-builder": "^0.2.0",
+    "@nuxt/schema": "^3.0.0-rc.12",
+    "@nuxtjs/eslint-config-typescript": "^11.0.0",
+    "@remindgmbh/eslint-config-nuxt": "^1.0.1",
+    "@remindgmbh/nuxt-typo3": "^2.0.1",
+    "@remindgmbh/stylelint-config": "^1.0.0",
+    "eslint": "^8.25.0",
+    "nuxt": "^3.0.0-rc.12",
+    "postcss": "^8.4.18",
+    "postcss-html": "^1.5.0",
+    "postcss-scss": "^4.0.5",
+    "prettier": "^2.7.1",
+    "stylelint": "^14.14.0"
+  }
+}

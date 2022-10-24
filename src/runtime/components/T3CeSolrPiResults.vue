@@ -1,0 +1,42 @@
+<template>
+    <div class="t3-ce-solr-results">
+        <T3SolrSearch :content-element="contentElement" />
+        <template v-if="content.data.results.count">
+            <T3Pagination
+                v-if="pagination && paginationTop"
+                class="t3-ce-solr-results__pagination t3-ce-solr-results__pagination--top"
+                :pagination="pagination"
+            />
+            <div class="t3-ce-solr-results__list">
+                <T3SolrListItem
+                    v-for="item in content.data.results.documents"
+                    :key="item.url"
+                    :list-item="item"
+                />
+            </div>
+            <T3Pagination
+                v-if="pagination && paginationBottom"
+                class="t3-ce-solr-results__pagination t3-ce-solr-results__pagination--bottom"
+                :pagination="pagination"
+            />
+        </template>
+        <div v-else class="t3-ce-solr-results__no-results">
+            {{ noResultsFound }}
+        </div>
+    </div>
+</template>
+
+<script setup lang="ts">
+import { computed } from 'vue'
+import { T3Api } from '#nuxt-typo3'
+import { T3SolrApi, useT3CeSolrPiResults } from '#nuxt-typo3-solr'
+
+const props = defineProps<{
+    contentElement: T3Api.ContentElement<T3SolrApi.SolrPiResults>
+}>()
+
+const content = computed(() => props.contentElement.content)
+
+const { noResultsFound, pagination, paginationBottom, paginationTop } =
+    useT3CeSolrPiResults(content)
+</script>
