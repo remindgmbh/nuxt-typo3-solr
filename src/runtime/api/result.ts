@@ -1,9 +1,9 @@
-import { Api } from '#nuxt-typo3'
+import { T3Api } from '#nuxt-typo3'
 import { Document } from '.'
 
 export interface Result {
     documents: Document[]
     count: number
     query?: string
-    pagination: Api.Pagination
+    pagination: T3Api.Pagination
 }
