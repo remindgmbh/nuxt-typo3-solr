@@ -26,7 +26,8 @@
 
 <script setup lang="ts">
 import { T3Api } from '#nuxt-typo3'
-import { T3SolrApi, useT3SolrSearch } from '#nuxt-typo3-solr'
+import { T3SolrApi } from '#nuxt-typo3-solr'
+import { useT3SolrSearch } from '#nuxt-typo3-solr/composables/useT3SolrSearch'
 
 const props = defineProps<{
     contentElement: T3Api.ContentElement<

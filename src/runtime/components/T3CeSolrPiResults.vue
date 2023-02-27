@@ -29,7 +29,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { T3Api } from '#nuxt-typo3'
-import { T3SolrApi, useT3CeSolrPiResults } from '#nuxt-typo3-solr'
+import { T3SolrApi } from '#nuxt-typo3-solr'
+import { useT3CeSolrPiResults } from '#nuxt-typo3-solr/composables/useT3CeSolrPiResults'
 
 const props = defineProps<{
     contentElement: T3Api.ContentElement<T3SolrApi.SolrPiResults>

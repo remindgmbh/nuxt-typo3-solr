@@ -26,16 +26,16 @@ export default defineNuxtConfig({
     },
     css: ['@/assets/base.scss'],
     typo3: {
-        customScssVariables: '@/assets/variables.scss',
         contentElements: {
             header: {
                 fullWidth: false,
             },
-            textmedia: {
-                ignoreCookies: true,
-            },
+            // textmedia: {
+            //     ignoreCookies: true,
+            // },
         },
         languages: ['/de/'],
+        scssForwards: ['@/assets/breakpoints.scss', '@/assets/colors.scss'],
     },
     modules: ['@remindgmbh/nuxt-typo3', '@remindgmbh/nuxt-typo3-solr'],
     vite: {

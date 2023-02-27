@@ -3,7 +3,8 @@ import { navigateTo } from '#app'
 import { useI18n } from 'vue-i18n'
 import { useForm } from 'vee-validate'
 import { debounce } from 'perfect-debounce'
-import { T3Model, useT3Api } from '#nuxt-typo3'
+import { T3Model } from '#nuxt-typo3'
+import { useT3Api } from '#nuxt-typo3/composables/useT3Api'
 import { T3SolrApi } from '#nuxt-typo3-solr'
 
 export function useT3SolrSearch(
