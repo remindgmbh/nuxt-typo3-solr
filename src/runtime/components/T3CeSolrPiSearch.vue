@@ -5,12 +5,11 @@
 </template>
 
 <script setup lang="ts">
-import { T3Api } from '#nuxt-typo3'
-import { T3SolrApi } from '#nuxt-typo3-solr'
+import { T3Model, T3SolrModel } from '#imports'
 
 defineProps<{
-    contentElement: T3Api.ContentElement<
-        T3SolrApi.SolrPiSearch | T3SolrApi.SolrPiResults
+    contentElement: T3Model.Typo3.Content.Element<
+        T3SolrModel.SolrPiSearch | T3SolrModel.SolrPiResults
     >
 }>()
 </script>

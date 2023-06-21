@@ -1,5 +1,6 @@
 import {
     addComponentsDir,
+    addImports,
     addImportsDir,
     addPlugin,
     createResolver,
@@ -41,7 +42,12 @@ export default defineNuxtModule<ModuleOptions>({
         addPlugin({
             src: resolver.resolve('runtime/plugins/i18n'),
         })
-        addImportsDir([resolver.resolve('runtime/composables/use*.*')])
+        addImportsDir(resolver.resolve('runtime/composables/**/*'))
+        addImports({
+            from: resolver.resolve('runtime/models'),
+            name: '*',
+            as: 'T3SolrModel',
+        })
         addComponentsDir({
             path: resolver.resolve('runtime/components'),
             pathPrefix: false,

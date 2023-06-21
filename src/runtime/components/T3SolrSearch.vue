@@ -1,6 +1,6 @@
 <template>
     <div class="t3-solr-search">
-        <T3Header :content-element="contentElement" />
+        <T3Header :content="contentElement.content" />
         <form class="t3-solr-search__form" @submit="submit">
             <T3Autocomplete
                 class="t3-solr-search__input"
@@ -25,13 +25,12 @@
 </template>
 
 <script setup lang="ts">
-import { T3Api } from '#nuxt-typo3'
-import { T3SolrApi } from '#nuxt-typo3-solr'
+import { T3Model, T3SolrModel } from '#imports'
 import { useT3SolrSearch } from '#nuxt-typo3-solr/composables/useT3SolrSearch'
 
 const props = defineProps<{
-    contentElement: T3Api.ContentElement<
-        T3SolrApi.SolrPiSearch | T3SolrApi.SolrPiResults
+    contentElement: T3Model.Typo3.Content.Element<
+        T3SolrModel.SolrPiSearch | T3SolrModel.SolrPiResults
     >
 }>()
 

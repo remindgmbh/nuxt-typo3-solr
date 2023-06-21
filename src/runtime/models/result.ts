@@ -1,9 +1,9 @@
-import { T3Api } from '#nuxt-typo3'
+import { Typo3 } from '@remindgmbh/nuxt-typo3/dist/runtime/models'
 import { Document } from '.'
 
 export interface Result {
     documents: Document[]
     count: number
     query?: string
-    pagination: T3Api.Pagination
+    pagination: Typo3.Extbase.Pagination
 }

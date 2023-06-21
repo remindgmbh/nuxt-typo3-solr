@@ -12,9 +12,9 @@
 </template>
 
 <script setup lang="ts">
-import { T3SolrApi } from '#nuxt-typo3-solr'
+import { T3SolrModel } from '#imports'
 
 defineProps<{
-    listItem: T3SolrApi.Document
+    listItem: T3SolrModel.Document
 }>()
 </script>

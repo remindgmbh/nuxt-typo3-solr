@@ -1,16 +1,16 @@
 import { computed, Ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRuntimeConfig } from '#app'
-import { T3Api } from '#nuxt-typo3'
-import { T3SolrApi } from '#nuxt-typo3-solr'
+import { Typo3 } from '@remindgmbh/nuxt-typo3/dist/runtime/models'
+import { T3SolrModel } from '#imports'
 
-export function useT3CeSolrPiResults(content: Ref<T3SolrApi.SolrPiResults>) {
+export function useT3CeSolrPiResults(content: Ref<T3SolrModel.SolrPiResults>) {
     const { t } = useI18n()
     const config = useRuntimeConfig().public.typo3Solr
 
     const noResultsFound = computed(() => t('solr.noResults'))
 
-    const pagination = computed<T3Api.Pagination | undefined>(
+    const pagination = computed<Typo3.Extbase.Pagination | undefined>(
         () => content.value.data.results.pagination
     )
 
