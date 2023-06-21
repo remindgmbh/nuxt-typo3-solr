@@ -1,6 +1,10 @@
 <template>
     <div class="t3-ce-solr-results">
-        <T3SolrSearch :content-element="contentElement" />
+        <T3SolrSearch :content-element="contentElement">
+            <template #submit="{ loading }">
+                <slot name="submit" :loading="loading"></slot>
+            </template>
+        </T3SolrSearch>
         <template v-if="content.data.results.count">
             <T3Pagination
                 v-if="pagination && paginationTop"

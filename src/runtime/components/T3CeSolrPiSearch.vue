@@ -1,6 +1,10 @@
 <template>
     <div class="t3-ce-solr-search">
-        <T3SolrSearch :content-element="contentElement" />
+        <T3SolrSearch :content-element="contentElement">
+            <template #submit="{ loading }">
+                <slot name="submit" :loading="loading"></slot>
+            </template>
+        </T3SolrSearch>
     </div>
 </template>
 

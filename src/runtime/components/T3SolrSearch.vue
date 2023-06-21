@@ -16,9 +16,9 @@
                 type="submit"
                 :disabled="loading"
             >
-                <span class="t3-solr-search__submit-label">{{
-                    submitLabel
-                }}</span>
+                <slot name="submit" :loading="loading">
+                    {{ submitLabel }}
+                </slot>
             </button>
         </form>
     </div>
