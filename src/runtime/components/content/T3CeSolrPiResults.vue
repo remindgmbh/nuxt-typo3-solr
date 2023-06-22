@@ -10,7 +10,7 @@
             </div>
             <T3Pagination
                 v-if="contentElement.content.data.pagination"
-                class="t3-ce-solr-results__pagination t3-ce-solr-results__pagination--bottom"
+                class="t3-ce-solr-results__pagination"
                 :pagination="contentElement.content.data.pagination"
             />
         </template>
