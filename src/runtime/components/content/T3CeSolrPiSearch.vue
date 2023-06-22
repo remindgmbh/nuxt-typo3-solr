@@ -1,9 +1,9 @@
 <template>
-    <div class="t3-solr-search">
+    <div class="t3-ce-solr-search">
         <T3Header :content="contentElement.content" />
-        <form class="t3-solr-search__form" @submit="submit">
+        <form class="t3-ce-solr-search__form" @submit="submit">
             <T3Autocomplete
-                class="t3-solr-search__input"
+                class="t3-ce-solr-search__input"
                 :disabled="loading"
                 :name="inputName"
                 :placeholder="placeholder"
@@ -12,7 +12,7 @@
                 @input="onInput"
             />
             <button
-                class="t3-solr-search__submit"
+                class="t3-ce-solr-search__submit"
                 type="submit"
                 :disabled="loading"
             >
@@ -25,13 +25,10 @@
 </template>
 
 <script setup lang="ts">
-import { T3Model, T3SolrModel } from '#imports'
-import { useT3SolrSearch } from '#nuxt-typo3-solr/composables/useT3SolrSearch'
+import { T3Model, T3SolrModel, useT3CeSolrPiSearch } from '#imports'
 
 const props = defineProps<{
-    contentElement: T3Model.Typo3.Content.Element<
-        T3SolrModel.SolrPiSearch | T3SolrModel.SolrPiResults
-    >
+    contentElement: T3Model.Typo3.Content.Element<T3SolrModel.SolrPiSearch>
 }>()
 
 const {
@@ -43,17 +40,5 @@ const {
     submitLabel,
     onInput,
     submit,
-} = useT3SolrSearch(props.contentElement.content)
+} = useT3CeSolrPiSearch(props.contentElement)
 </script>
-
-<style lang="scss">
-.t3-solr-search {
-    &__form {
-        display: flex;
-    }
-
-    &__input {
-        flex-grow: 1;
-    }
-}
-</style>

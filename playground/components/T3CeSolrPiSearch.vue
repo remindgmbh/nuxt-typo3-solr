@@ -1,5 +1,5 @@
 <script lang="ts">
-export { default } from '#nuxt-typo3-solr/components/T3CeSolrPiSearch.vue'
+export { default } from '#nuxt-typo3-solr/components/content/T3CeSolrPiSearch.vue'
 </script>
 
 <style lang="scss">

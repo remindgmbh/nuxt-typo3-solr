@@ -1,11 +1,6 @@
 <template>
     <div class="t3-ce-solr-results">
-        <T3SolrSearch :content-element="contentElement">
-            <template #submit="{ loading }">
-                <slot name="submit" :loading="loading"></slot>
-            </template>
-        </T3SolrSearch>
-        <template v-if="content.data.results.count">
+        <template v-if="contentElement.content.data.count">
             <T3Pagination
                 v-if="pagination && paginationTop"
                 class="t3-ce-solr-results__pagination t3-ce-solr-results__pagination--top"
@@ -13,7 +8,7 @@
             />
             <div class="t3-ce-solr-results__list">
                 <T3SolrListItem
-                    v-for="item in content.data.results.documents"
+                    v-for="item in contentElement.content.data.documents"
                     :key="item.url"
                     :list-item="item"
                 />
@@ -31,15 +26,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
 import { T3Model, T3SolrModel, useT3CeSolrPiResults } from '#imports'
 
 const props = defineProps<{
     contentElement: T3Model.Typo3.Content.Element<T3SolrModel.SolrPiResults>
 }>()
 
-const content = computed(() => props.contentElement.content)
-
 const { noResultsFound, pagination, paginationBottom, paginationTop } =
-    useT3CeSolrPiResults(content)
+    useT3CeSolrPiResults(props.contentElement)
 </script>

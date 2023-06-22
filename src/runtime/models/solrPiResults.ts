@@ -1,7 +1,11 @@
-import { Result, SolrPiSearch } from '.'
+import { Typo3 } from '@remindgmbh/nuxt-typo3/dist/runtime/models'
+import { Document } from '.'
 
-export type SolrPiResults = SolrPiSearch & {
+export interface SolrPiResults extends Typo3.Content.Data.Base {
     data: {
-        results: Result
+        documents: Document[]
+        count: number
+        query?: string
+        pagination: Typo3.Extbase.Pagination
     }
 }

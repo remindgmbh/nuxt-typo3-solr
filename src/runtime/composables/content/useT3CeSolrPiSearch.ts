@@ -4,10 +4,10 @@ import { useI18n } from 'vue-i18n'
 import { useForm } from 'vee-validate'
 import { debounce } from 'perfect-debounce'
 import { Autocomplete } from '@remindgmbh/nuxt-typo3/dist/runtime/models'
-import { T3SolrModel, useT3Api } from '#imports'
+import { T3Model, T3SolrModel, useT3Api } from '#imports'
 
-export function useT3SolrSearch(
-    content: T3SolrModel.SolrPiSearch | T3SolrModel.SolrPiResults
+export function useT3CeSolrPiSearch(
+    contentElement: T3Model.Typo3.Content.Element<T3SolrModel.SolrPiSearch>
 ) {
     const inputName = 'search_term'
     const api = useT3Api()
@@ -16,9 +16,7 @@ export function useT3SolrSearch(
     const optionGroups = ref<Autocomplete.OptionGroup[]>([])
     const loading = ref(false)
 
-    const defaultValue = computed(
-        () => (content as T3SolrModel.SolrPiResults).data.results.query
-    )
+    const defaultValue = computed(() => contentElement.content.data.query)
 
     const placeholder = computed(() => t('solr.placeholder'))
 
@@ -32,9 +30,9 @@ export function useT3SolrSearch(
             return
         }
 
-        const path = content.data.form.suggest.url
+        const path = contentElement.content.data.suggest.url
         const params = {
-            [content.data.form.suggest.queryParam]: value,
+            [contentElement.content.data.suggest.queryParam]: value,
         }
 
         const suggestions: T3SolrModel.Suggestions = await api.get(path, {
@@ -55,7 +53,7 @@ export function useT3SolrSearch(
                 name: 'links',
                 label: t('solr.directLinks'),
                 options: (suggestions.documents ?? []).map((document) => ({
-                    key: document.link,
+                    key: document.link ? document.link : document.title,
                     label: document.title,
                     link: document.link,
                 })),
@@ -66,10 +64,10 @@ export function useT3SolrSearch(
     async function search(data: { [key: string]: any }) {
         const term = data[inputName] || '*'
 
-        const path = content.data.form.search.url
+        const path = contentElement.content.data.search.url
 
         const query = {
-            [content.data.form.search.queryParam]: term,
+            [contentElement.content.data.search.queryParam]: term,
         }
 
         loading.value = true
