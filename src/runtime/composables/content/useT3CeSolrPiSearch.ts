@@ -7,7 +7,7 @@ import { Autocomplete } from '@remindgmbh/nuxt-typo3/dist/runtime/models'
 import { T3Model, T3SolrModel, useT3Api } from '#imports'
 
 export function useT3CeSolrPiSearch(
-    contentElement: T3Model.Typo3.Content.Element<T3SolrModel.SolrPiSearch>
+    contentElement: T3Model.Typo3.Content.Element<T3SolrModel.Typo3.SolrPiSearch>
 ) {
     const inputName = 'search_term'
     const api = useT3Api()
@@ -35,7 +35,7 @@ export function useT3CeSolrPiSearch(
             [contentElement.content.data.suggest.queryParam]: value,
         }
 
-        const suggestions: T3SolrModel.Suggestions = await api.get(path, {
+        const suggestions: T3SolrModel.Typo3.Suggestions = await api.get(path, {
             params,
         })
 

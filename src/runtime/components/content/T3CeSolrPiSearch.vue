@@ -28,7 +28,7 @@
 import { T3Model, T3SolrModel, useT3CeSolrPiSearch } from '#imports'
 
 const props = defineProps<{
-    contentElement: T3Model.Typo3.Content.Element<T3SolrModel.SolrPiSearch>
+    contentElement: T3Model.Typo3.Content.Element<T3SolrModel.Typo3.SolrPiSearch>
 }>()
 
 const {

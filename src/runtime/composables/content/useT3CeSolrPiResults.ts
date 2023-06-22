@@ -1,14 +1,13 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useRuntimeConfig } from '#app'
 import { Typo3 } from '@remindgmbh/nuxt-typo3/dist/runtime/models'
-import { T3Model, T3SolrModel } from '#imports'
+import { T3Model, T3SolrModel, useT3SolrConfig } from '#imports'
 
 export function useT3CeSolrPiResults(
-    contentElement: T3Model.Typo3.Content.Element<T3SolrModel.SolrPiResults>
+    contentElement: T3Model.Typo3.Content.Element<T3SolrModel.Typo3.SolrPiResults>
 ) {
     const { t } = useI18n()
-    const config = useRuntimeConfig().public.typo3Solr
+    const config = useT3SolrConfig()
 
     const noResultsFound = computed(() => t('solr.noResults'))
 

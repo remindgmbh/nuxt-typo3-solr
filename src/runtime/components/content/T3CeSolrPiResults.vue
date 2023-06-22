@@ -29,7 +29,7 @@
 import { T3Model, T3SolrModel, useT3CeSolrPiResults } from '#imports'
 
 const props = defineProps<{
-    contentElement: T3Model.Typo3.Content.Element<T3SolrModel.SolrPiResults>
+    contentElement: T3Model.Typo3.Content.Element<T3SolrModel.Typo3.SolrPiResults>
 }>()
 
 const { noResultsFound, pagination, paginationBottom, paginationTop } =

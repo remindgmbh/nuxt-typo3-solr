@@ -15,6 +15,6 @@
 import { T3SolrModel } from '#imports'
 
 defineProps<{
-    listItem: T3SolrModel.Document
+    listItem: T3SolrModel.Typo3.Document
 }>()
 </script>
