@@ -1,6 +1,6 @@
 export interface Document {
     title: string
     content: string
-    url: string
+    link: string
     [key: string]: any
 }

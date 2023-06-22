@@ -1,11 +1,12 @@
 import { Typo3 } from '@remindgmbh/nuxt-typo3/dist/runtime/models'
-import { Document } from '.'
+import { Document, Facet } from '.'
 
 export interface SolrPiResults extends Typo3.Content.Data.Base {
     data: {
-        documents: Document[]
-        count: number
         query?: string
+        count: number
         pagination: Typo3.Extbase.Pagination
+        facets: Facet[]
+        documents: Document[]
     }
 }

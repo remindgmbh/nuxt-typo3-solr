@@ -9,7 +9,7 @@
             <div class="t3-ce-solr-results__list">
                 <T3SolrListItem
                     v-for="item in contentElement.content.data.documents"
-                    :key="item.url"
+                    :key="item.link"
                     :list-item="item"
                 />
             </div>
