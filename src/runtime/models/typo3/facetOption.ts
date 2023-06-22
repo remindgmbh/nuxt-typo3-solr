@@ -3,5 +3,5 @@ export interface FacetOption {
     label: string
     link: string
     count: number
-    selected: boolean
+    active: boolean
 }
