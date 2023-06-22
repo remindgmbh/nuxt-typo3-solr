@@ -51,7 +51,7 @@ export function useT3CeSolrPiSearch(
             },
             {
                 name: 'links',
-                label: t('solr.directLinks'),
+                label: t('solr.topResults'),
                 options: (suggestions.documents ?? []).map((document) => ({
                     key: document.link ? document.link : document.title,
                     label: document.title,
