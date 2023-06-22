@@ -5,8 +5,9 @@ export interface Facet {
     name: string
     label: string
     allOptions: {
-        active: boolean
         link: string
+        count: number
+        active: boolean
     }
     options: FacetOption[]
 }
