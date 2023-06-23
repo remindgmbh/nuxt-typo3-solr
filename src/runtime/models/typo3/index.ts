@@ -1,6 +1,7 @@
 export type { Document } from './document'
 export type { Facet } from './facet'
 export type { FacetOption } from './facetOption'
+export type { SearchForm } from './searchForm'
 export type { SolrPiResults } from './solrPiResults'
 export type { SolrPiSearch } from './solrPiSearch'
 export type { Suggestions } from './suggestions'

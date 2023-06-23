@@ -4,11 +4,9 @@ import { useI18n } from 'vue-i18n'
 import { useForm } from 'vee-validate'
 import { debounce } from 'perfect-debounce'
 import { Autocomplete } from '@remindgmbh/nuxt-typo3/dist/runtime/models'
-import { T3Model, T3SolrModel, useT3Api } from '#imports'
+import { T3SolrModel, useT3Api } from '#imports'
 
-export function useT3CeSolrPiSearch(
-    contentElement: T3Model.Typo3.Content.Element<T3SolrModel.Typo3.SolrPiSearch>
-) {
+export function useT3SolrSearchForm(searchForm: T3SolrModel.Typo3.SearchForm) {
     const inputName = 'search_term'
     const api = useT3Api()
     const { handleSubmit } = useForm()
@@ -16,7 +14,7 @@ export function useT3CeSolrPiSearch(
     const optionGroups = ref<Autocomplete.OptionGroup[]>([])
     const loading = ref(false)
 
-    const defaultValue = computed(() => contentElement.content.data.query)
+    const defaultValue = computed(() => searchForm.query)
 
     const placeholder = computed(() => t('solr.placeholder'))
 
@@ -30,9 +28,9 @@ export function useT3CeSolrPiSearch(
             return
         }
 
-        const path = contentElement.content.data.suggest.url
+        const path = searchForm.suggest.url
         const params = {
-            [contentElement.content.data.suggest.queryParam]: value,
+            [searchForm.suggest.queryParam]: value,
         }
 
         const suggestions: T3SolrModel.Typo3.Suggestions = await api.get(path, {
@@ -64,10 +62,10 @@ export function useT3CeSolrPiSearch(
     async function search(data: { [key: string]: any }) {
         const term = data[inputName] || '*'
 
-        const path = contentElement.content.data.search.url
+        const path = searchForm.search.url
 
         const query = {
-            [contentElement.content.data.search.queryParam]: term,
+            [searchForm.search.queryParam]: term,
         }
 
         loading.value = true
