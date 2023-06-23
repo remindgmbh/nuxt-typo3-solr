@@ -1,7 +1,7 @@
 <template>
-    <form class="t3-solr-search" @submit="submit">
+    <form class="t3-solr-search-form" @submit="submit">
         <T3Autocomplete
-            class="t3-solr-search__input"
+            class="t3-solr-search-form__input"
             :disabled="loading"
             :name="inputName"
             :placeholder="placeholder"
@@ -10,7 +10,7 @@
             @input="onInput"
         />
         <button
-            class="t3-solr-search__submit"
+            class="t3-solr-search-form__submit"
             type="submit"
             :disabled="loading"
         >
