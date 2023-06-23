@@ -43,7 +43,7 @@ export default defineNuxtModule<ModuleOptions>({
             src: resolver.resolve('runtime/plugins/i18n'),
         })
         addPlugin({
-            src: resolver.resolve('runtime/plugins/search'),
+            src: resolver.resolve('runtime/plugins/searchData'),
         })
         addImportsDir(resolver.resolve('runtime/composables/**/*'))
         addImports({
