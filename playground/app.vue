@@ -16,7 +16,7 @@
                     </template>
                 </template>
             </div>
-            <pre>{{ searchData }}</pre>
+            <pre>{{ searchForm }}</pre>
         </T3TopbarLayoutHeader>
         <T3TopbarLayoutContent>
             <NuxtPage />
@@ -26,5 +26,5 @@
 
 <script setup lang="ts">
 const { rootPageNavigation } = useT3Navigation()
-const { searchData } = useT3SolrApiData()
+const { searchForm } = useT3SolrApiData()
 </script>

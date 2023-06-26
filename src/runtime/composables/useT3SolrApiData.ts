@@ -9,16 +9,16 @@ export function useT3SolrApiData() {
     const config = useRuntimeConfig()
     const logger = useLogger()
 
-    const searchData: Ref<T3SolrModel.Typo3.SearchForm | undefined> = useState(
-        't3-solr-search-data'
+    const searchForm: Ref<T3SolrModel.Typo3.SearchForm | undefined> = useState(
+        't3-solr-search-form'
     )
 
-    async function loadSearchData(
+    async function loadSearchForm(
         path: string
     ): Promise<T3SolrModel.Typo3.SearchForm | undefined> {
         const initialDataPath = apiPath.getInitialDataPath(path)
 
-        if (!searchData.value) {
+        if (!searchForm.value) {
             try {
                 const result = await api.get<T3SolrModel.Typo3.SearchForm>(
                     initialDataPath,
@@ -28,18 +28,18 @@ export function useT3SolrApiData() {
                         },
                     }
                 )
-                searchData.value = result
+                searchForm.value = result
                 return result
             } catch (error) {
                 // log error and do nothing so undefined is returned
                 logger.error(error)
             }
         }
-        return searchData.value
+        return searchForm.value
     }
 
     return {
-        searchData,
-        loadSearchData,
+        searchForm,
+        loadSearchForm,
     }
 }
