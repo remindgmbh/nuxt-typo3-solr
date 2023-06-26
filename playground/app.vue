@@ -16,7 +16,11 @@
                     </template>
                 </template>
             </div>
-            <pre>{{ searchForm }}</pre>
+            <T3SolrSearchForm
+                v-if="searchForm"
+                :search-form="searchForm"
+                default-value=""
+            />
         </T3TopbarLayoutHeader>
         <T3TopbarLayoutContent>
             <NuxtPage />

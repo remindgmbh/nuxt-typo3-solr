@@ -4,17 +4,20 @@ import { useI18n } from 'vue-i18n'
 import { useForm } from 'vee-validate'
 import { debounce } from 'perfect-debounce'
 import { Autocomplete } from '@remindgmbh/nuxt-typo3/dist/runtime/models'
-import { T3SolrModel, useT3Api } from '#imports'
+import { T3SolrModel, useT3Api, useRoute } from '#imports'
 
 export function useT3SolrSearchForm(searchForm: T3SolrModel.Typo3.SearchForm) {
     const inputName = 'search_term'
     const api = useT3Api()
+    const route = useRoute()
     const { handleSubmit } = useForm()
     const { t } = useI18n()
     const optionGroups = ref<Autocomplete.OptionGroup[]>([])
     const loading = ref(false)
 
-    const defaultValue = computed(() => searchForm.query)
+    const query = computed(() =>
+        route.query[searchForm.search.queryParam]?.toString()
+    )
 
     const placeholder = computed(() => t('solr.placeholder'))
 
@@ -78,11 +81,11 @@ export function useT3SolrSearchForm(searchForm: T3SolrModel.Typo3.SearchForm) {
     const submit = handleSubmit(search)
 
     return {
-        defaultValue,
         inputName,
         loading,
         optionGroups,
         placeholder,
+        query,
         submitLabel,
         onInput: debounce(onInput, 300),
         submit,

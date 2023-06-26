@@ -1,5 +1,4 @@
 export interface SearchForm {
-    query?: string
     search: {
         url: string
         queryParam: string

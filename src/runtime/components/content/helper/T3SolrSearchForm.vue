@@ -5,7 +5,7 @@
             :disabled="loading"
             :name="inputName"
             :placeholder="placeholder"
-            :default-value="defaultValue"
+            :default-value="defaultValue ?? query"
             :option-groups="optionGroups"
             @input="onInput"
         />
@@ -26,14 +26,15 @@ import { T3SolrModel, useT3SolrSearchForm } from '#imports'
 
 const props = defineProps<{
     searchForm: T3SolrModel.Typo3.SearchForm
+    defaultValue?: string
 }>()
 
 const {
-    defaultValue,
     inputName,
     loading,
     optionGroups,
     placeholder,
+    query,
     submitLabel,
     onInput,
     submit,
