@@ -10,7 +10,7 @@ Nuxt3 project with [@remindgmbh/nuxt-typo3](https://github.com/remindgmbh/nuxt-t
 
 ## Installation
 
-1. install using `npm install @remindgmbh/nuxt-typo3-solr` or `yarn add @remindgmbh/nuxt-typo3-solr`
+1. install using `npm install @remindgmbh/nuxt-typo3-solr`
 
 2. add module in nuxt.config.js
 
