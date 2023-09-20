@@ -4,6 +4,6 @@ export interface Document {
     title: string
     content: string
     link: string
-    images: Typo3.Asset[]
+    image?: Typo3.Asset
     [key: string]: any
 }
