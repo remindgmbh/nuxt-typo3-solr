@@ -55,7 +55,6 @@ export default defineNuxtModule<ModuleOptions>({
             path: resolver.resolve('runtime/components'),
             pathPrefix: false,
             global: true,
-            ignore: ['**/shared.*'],
         })
     },
 })

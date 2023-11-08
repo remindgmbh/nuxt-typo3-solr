@@ -3,7 +3,7 @@ import { navigateTo } from '#app'
 import { useI18n } from 'vue-i18n'
 import { useForm } from 'vee-validate'
 import { debounce } from 'perfect-debounce'
-import { Autocomplete } from '@remindgmbh/nuxt-typo3/dist/runtime/models'
+import { Input } from '@remindgmbh/nuxt-typo3/dist/runtime/models'
 import { T3SolrModel, useT3Api, useRoute } from '#imports'
 
 export function useT3SolrSearchForm(searchForm: T3SolrModel.Typo3.SearchForm) {
@@ -12,7 +12,7 @@ export function useT3SolrSearchForm(searchForm: T3SolrModel.Typo3.SearchForm) {
     const route = useRoute()
     const { handleSubmit } = useForm()
     const { t } = useI18n()
-    const optionGroups = ref<Autocomplete.OptionGroup[]>([])
+    const optionGroups = ref<Input.Autocomplete.OptionGroup[]>([])
     const loading = ref(false)
 
     const query = computed(() =>

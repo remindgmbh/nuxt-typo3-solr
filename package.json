@@ -40,7 +40,7 @@
         "@nuxt/module-builder": "^0.4.0",
         "@nuxt/schema": "^3.6.1",
         "@remindgmbh/eslint-config-nuxt": "^1.0.4",
-        "@remindgmbh/nuxt-typo3": "^3.0.0",
+        "@remindgmbh/nuxt-typo3": "github:remindgmbh/nuxt-typo3#develop",
         "@remindgmbh/stylelint-config": "^1.0.1",
         "@types/node": "^20.3.2",
         "eslint": "^8.43.0",
