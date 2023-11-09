@@ -15,14 +15,14 @@ export function useT3SolrSearchForm(searchForm: T3SolrModel.Typo3.SearchForm) {
     const optionGroups = ref<Input.Autocomplete.OptionGroup[]>([])
     const loading = ref(false)
 
-    const query = computed(() =>
-        route.query[searchForm.search.queryParam]?.toString()
+    const query = computed(
+        () => route.query[searchForm.search.queryParam]?.toString(),
     )
 
     const placeholder = computed(() => t('solr.placeholder'))
 
     const submitLabel = computed(() =>
-        loading.value ? t('solr.loading') : t('solr.submit')
+        loading.value ? t('solr.loading') : t('solr.submit'),
     )
 
     async function onInput(value: string) {
@@ -47,7 +47,7 @@ export function useT3SolrSearchForm(searchForm: T3SolrModel.Typo3.SearchForm) {
                     (key) => ({
                         key,
                         label: key,
-                    })
+                    }),
                 ),
             },
             {

@@ -34,7 +34,7 @@ export default defineNuxtModule<ModuleOptions>({
 
         nuxt.options.runtimeConfig.public[CONFIG_KEY] = defu(
             nuxt.options.runtimeConfig.public[CONFIG_KEY],
-            options
+            options,
         )
 
         nuxt.options.alias['#nuxt-typo3-solr'] = resolver.resolve('runtime')

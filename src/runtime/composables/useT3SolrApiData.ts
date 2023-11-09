@@ -1,4 +1,4 @@
-import { Ref } from 'vue'
+import { type Ref } from 'vue'
 import { useLogger } from '#nuxt-logger'
 import { Typo3 } from '../models'
 import { useRuntimeConfig, useState, useT3Api, useT3ApiPath } from '#imports'
@@ -10,11 +10,11 @@ export function useT3SolrApiData() {
     const logger = useLogger()
 
     const searchForm: Ref<Typo3.SearchForm | undefined> = useState(
-        't3-solr-search-form'
+        't3-solr-search-form',
     )
 
     async function loadSearchForm(
-        path: string
+        path: string,
     ): Promise<Typo3.SearchForm | undefined> {
         const initialDataPath = apiPath.getInitialDataPath(path)
 
@@ -26,7 +26,7 @@ export function useT3SolrApiData() {
                         params: {
                             type: config.public.typo3Solr.api.searchType,
                         },
-                    }
+                    },
                 )
                 searchForm.value = result
                 return result

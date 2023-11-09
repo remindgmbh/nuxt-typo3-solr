@@ -1,4 +1,4 @@
-import { FacetOption } from '.'
+import type { FacetOption } from '.'
 
 export interface Facet {
     field: string
