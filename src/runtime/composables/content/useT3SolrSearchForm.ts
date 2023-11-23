@@ -2,6 +2,7 @@ import { computed, ref } from 'vue'
 import { navigateTo } from '#app'
 import { useI18n } from 'vue-i18n'
 import { useForm } from 'vee-validate'
+import { type RouteLocationRaw } from 'vue-router'
 import { debounce } from 'perfect-debounce'
 import { Input } from '@remindgmbh/nuxt-typo3/dist/runtime/models'
 import { T3SolrModel, useT3Api, useRoute } from '#imports'
@@ -62,18 +63,27 @@ export function useT3SolrSearchForm(searchForm: T3SolrModel.Typo3.SearchForm) {
         ]
     }
 
-    async function search(data: { [key: string]: any }) {
-        const term = data[inputName] || '*'
-
+    function getRoute(term: string): RouteLocationRaw {
         const path = searchForm.search.url
 
         const query = {
             [searchForm.search.queryParam]: term,
         }
 
+        return {
+            path,
+            query,
+        }
+    }
+
+    async function search(data: { [key: string]: any }) {
+        const term = data[inputName] || '*'
+
+        const route = getRoute(term)
+
         loading.value = true
 
-        await navigateTo({ path, query })
+        await navigateTo(route)
 
         loading.value = false
     }
@@ -87,6 +97,7 @@ export function useT3SolrSearchForm(searchForm: T3SolrModel.Typo3.SearchForm) {
         placeholder,
         query,
         submitLabel,
+        getRoute,
         onInput: debounce(onInput, 300),
         submit,
     }
