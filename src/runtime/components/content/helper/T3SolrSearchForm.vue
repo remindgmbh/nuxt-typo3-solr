@@ -1,5 +1,5 @@
 <template>
-    <form class="solr-search-form" @submit="submit">
+    <form ref="formRef" class="solr-search-form" @submit="submit">
         <component
             :is="Autocomplete"
             class="solr-search-form__input"
@@ -9,6 +9,7 @@
             :default-value="defaultValue ?? query"
             :option-groups="optionGroups"
             @input="onInput"
+            @select="onSelect"
         />
         <button
             class="solr-search-form__submit"
@@ -23,6 +24,7 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import {
     T3SolrModel,
     useT3DynamicComponent,
@@ -38,6 +40,8 @@ const props = defineProps<{
 const Autocomplete =
     useT3DynamicComponent<typeof T3Autocomplete>('Autocomplete')
 
+const formRef = ref<HTMLFormElement>()
+
 const {
     inputName,
     loading,
@@ -48,4 +52,8 @@ const {
     onInput,
     submit,
 } = useT3SolrSearchForm(props.searchForm)
+
+function onSelect() {
+    formRef.value?.requestSubmit()
+}
 </script>
