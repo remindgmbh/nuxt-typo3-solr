@@ -12,5 +12,4 @@ jobs:
       with:
         node-version: 20.9
     - run: npm ci
-    - run: npm --prefix ./playground ci
     - run: npm run prepublishOnly
