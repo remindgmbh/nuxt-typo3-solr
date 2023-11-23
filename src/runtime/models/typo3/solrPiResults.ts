@@ -8,5 +8,6 @@ export interface SolrPiResults extends Typo3.Content.Data.Header {
         pagination: Typo3.Extbase.Pagination
         facets: Facet[]
         documents: Document[]
+        spellchecking: string[]
     }
 }
