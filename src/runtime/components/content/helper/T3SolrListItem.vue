@@ -1,11 +1,10 @@
 <template>
-    <div class="solr-list-item">
-        <NuxtLink class="solr-list-item__title" :to="listItem.link">{{
+    <div class="t3-solr-list-item">
+        <NuxtLink class="t3-solr-list-item__title" :to="listItem.link">{{
             listItem.title
         }}</NuxtLink>
-        <component
-            :is="HtmlParser"
-            class="solr-list-item__content"
+        <T3HtmlParser
+            class="t3-solr-list-item__content"
             :content="listItem.content"
         />
         <NuxtLink :to="listItem.link">{{ listItem.link }}</NuxtLink>
@@ -13,12 +12,9 @@
 </template>
 
 <script setup lang="ts">
-import { T3SolrModel, useT3DynamicComponent } from '#imports'
-import { T3HtmlParser } from '#components'
+import { T3SolrModel } from '#imports'
 
 defineProps<{
     listItem: T3SolrModel.Typo3.Document
 }>()
-
-const HtmlParser = useT3DynamicComponent<typeof T3HtmlParser>('HtmlParser')
 </script>

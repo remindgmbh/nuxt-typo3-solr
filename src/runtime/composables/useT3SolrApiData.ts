@@ -1,5 +1,5 @@
 import { type Ref } from 'vue'
-import { useLogger } from '#nuxt-logger'
+import { useLogger } from '#imports'
 import { Typo3 } from '../models'
 import { useRuntimeConfig, useState, useT3Api, useT3ApiPath } from '#imports'
 
