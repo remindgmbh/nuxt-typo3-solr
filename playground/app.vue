@@ -29,6 +29,8 @@
 </template>
 
 <script setup lang="ts">
+import { useT3Navigation, useT3SolrData } from '#imports'
+
 const { rootPageNavigation } = useT3Navigation()
-const { searchForm } = useT3SolrApiData()
+const { searchForm } = useT3SolrData()
 </script>
