@@ -21,10 +21,10 @@
 </template>
 
 <script setup lang="ts">
-import { T3SolrModel, useT3Content } from '#imports'
+import { T3SolrModel, useT3ContentInjection } from '#imports'
 import { T3SolrListItem } from '#components'
 
-const { injectContentElement } = useT3Content()
+const { injectContentElement } = useT3ContentInjection()
 
 const contentElement = injectContentElement<T3SolrModel.Typo3.SolrPiResults>()
 </script>

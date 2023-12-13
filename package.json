@@ -39,7 +39,7 @@
         "@nuxt/module-builder": "^0.5.4",
         "@nuxt/schema": "^3.8.2",
         "@remindgmbh/eslint-config-nuxt": "^1.0.5",
-        "@remindgmbh/nuxt-typo3": "^3.2.0",
+        "@remindgmbh/nuxt-typo3": "^0.0.0-development-1702466770-647192d247c9659400b2e182e05d78c0973cb144",
         "@types/node": "^20.9.4",
         "eslint": "^8.54.0",
         "nuxt": "^3.8.2",
