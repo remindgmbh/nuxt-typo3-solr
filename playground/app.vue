@@ -2,6 +2,14 @@
     <T3TopbarLayout>
         <T3TopbarLayoutHeader>
             <div>
+                <NuxtLink
+                    v-for="language in availableLanguages"
+                    :key="language.link"
+                    :to="language.link"
+                    >{{ language.navigationTitle }}</NuxtLink
+                >
+            </div>
+            <div>
                 <template v-if="rootPageNavigation">
                     <NuxtLink :to="rootPageNavigation.link">{{
                         rootPageNavigation.title
@@ -17,8 +25,8 @@
                 </template>
             </div>
             <T3SolrSearchForm
-                v-if="searchForm"
-                :search-form="searchForm"
+                v-if="currentSearchForm"
+                :search-form="currentSearchForm"
                 default-value=""
             />
         </T3TopbarLayoutHeader>
@@ -29,8 +37,9 @@
 </template>
 
 <script setup lang="ts">
-import { useT3Navigation, useT3SolrData } from '#imports'
+import { useT3Navigation, useT3SolrData, useT3Languages } from '#imports'
 
 const { rootPageNavigation } = useT3Navigation()
-const { searchForm } = useT3SolrData()
+const { currentSearchForm } = useT3SolrData()
+const { availableLanguages } = useT3Languages()
 </script>

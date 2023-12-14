@@ -23,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, toRef } from 'vue'
 import { T3SolrModel, useT3SolrSearchForm } from '#imports'
 
 const props = defineProps<{
@@ -42,7 +42,7 @@ const {
     submitLabel,
     onInput,
     submit,
-} = useT3SolrSearchForm(props.searchForm)
+} = useT3SolrSearchForm(toRef(() => props.searchForm))
 
 function onSelect() {
     formRef.value?.requestSubmit()

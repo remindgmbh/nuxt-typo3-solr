@@ -3,6 +3,7 @@ import {
     addImports,
     addImportsDir,
     addPlugin,
+    addRouteMiddleware,
     createResolver,
     defineNuxtModule,
 } from '@nuxt/kit'
@@ -42,8 +43,10 @@ export default defineNuxtModule<ModuleOptions>({
         addPlugin({
             src: resolver.resolve('runtime/plugins/i18n'),
         })
-        addPlugin({
-            src: resolver.resolve('runtime/plugins/data'),
+        addRouteMiddleware({
+            name: 't3-solr-data',
+            path: resolver.resolve('runtime/middleware/data.global'),
+            global: true,
         })
         addImportsDir(resolver.resolve('runtime/composables/**/*'))
         addImports({

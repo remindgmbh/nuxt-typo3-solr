@@ -1,4 +1,4 @@
-import { computed, ref } from 'vue'
+import { computed, ref, type Ref } from 'vue'
 import { navigateTo } from '#app'
 import { useI18n } from 'vue-i18n'
 import { useForm } from 'vee-validate'
@@ -7,7 +7,9 @@ import { debounce } from 'perfect-debounce'
 import { Input } from '@remindgmbh/nuxt-typo3/dist/runtime/models'
 import { T3SolrModel, useT3Api, useRoute } from '#imports'
 
-export function useT3SolrSearchForm(searchForm: T3SolrModel.Typo3.SearchForm) {
+export function useT3SolrSearchForm(
+    searchForm: Ref<T3SolrModel.Typo3.SearchForm>,
+) {
     const inputName = 'search_term'
     const api = useT3Api()
     const route = useRoute()
@@ -17,7 +19,7 @@ export function useT3SolrSearchForm(searchForm: T3SolrModel.Typo3.SearchForm) {
     const loading = ref(false)
 
     const query = computed(
-        () => route.query[searchForm.search.queryParam]?.toString(),
+        () => route.query[searchForm.value.search.queryParam]?.toString(),
     )
 
     const placeholder = computed(() => t('solr.placeholder'))
@@ -32,9 +34,9 @@ export function useT3SolrSearchForm(searchForm: T3SolrModel.Typo3.SearchForm) {
             return
         }
 
-        const path = searchForm.suggest.url
+        const path = searchForm.value.suggest.url
         const params = {
-            [searchForm.suggest.queryParam]: value,
+            [searchForm.value.suggest.queryParam]: value,
         }
 
         const suggestions: T3SolrModel.Typo3.Suggestions = await api.get(path, {
@@ -64,10 +66,10 @@ export function useT3SolrSearchForm(searchForm: T3SolrModel.Typo3.SearchForm) {
     }
 
     function getRoute(term: string): RouteLocationRaw {
-        const path = searchForm.search.url
+        const path = searchForm.value.search.url
 
         const query = {
-            [searchForm.search.queryParam]: term,
+            [searchForm.value.search.queryParam]: term,
         }
 
         return {
