@@ -1,6 +1,6 @@
-import type { Typo3 } from '@remindgmbh/nuxt-typo3/dist/runtime/models'
 import type { SearchForm } from '.'
+import type { T3Model } from '#imports'
 
-export interface SolrPiSearch extends Typo3.Content.Data.Header {
+export interface SolrPiSearch extends T3Model.Typo3.Content.Data.Header {
     data: SearchForm
 }

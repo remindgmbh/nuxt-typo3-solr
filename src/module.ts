@@ -3,32 +3,19 @@ import {
     addImports,
     addImportsDir,
     addPlugin,
-    addRouteMiddleware,
     createResolver,
     defineNuxtModule,
 } from '@nuxt/kit'
-import { defu } from 'defu'
 import { name, version } from '../package.json'
+import { defu } from 'defu'
 
 export const CONFIG_KEY = 'typo3Solr'
 
-export interface ModuleOptions {
-    api: {
-        // Type number of global search, only required if changed in backend
-        searchType?: number
-    }
-}
-
-export default defineNuxtModule<ModuleOptions>({
+export default defineNuxtModule({
     meta: {
+        configKey: CONFIG_KEY,
         name,
         version,
-        configKey: CONFIG_KEY,
-    },
-    defaults: {
-        api: {
-            searchType: 7385,
-        },
     },
     setup(options, nuxt) {
         const resolver = createResolver(import.meta.url)
@@ -43,21 +30,16 @@ export default defineNuxtModule<ModuleOptions>({
         addPlugin({
             src: resolver.resolve('runtime/plugins/i18n'),
         })
-        addRouteMiddleware({
-            name: 't3-solr-data',
-            path: resolver.resolve('runtime/middleware/data.global'),
-            global: true,
-        })
         addImportsDir(resolver.resolve('runtime/composables/**/*'))
         addImports({
+            as: 'T3SolrModel',
             from: resolver.resolve('runtime/models'),
             name: '*',
-            as: 'T3SolrModel',
         })
         addComponentsDir({
+            global: true,
             path: resolver.resolve('runtime/components'),
             pathPrefix: false,
-            global: true,
         })
     },
 })

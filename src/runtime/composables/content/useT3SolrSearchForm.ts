@@ -1,11 +1,10 @@
-import { computed, ref, type Ref } from 'vue'
-import { navigateTo } from '#app'
-import { useI18n } from 'vue-i18n'
-import { useForm } from 'vee-validate'
+import { type Ref, computed, ref } from 'vue'
+import { type T3Model, type T3SolrModel, useRoute, useT3Api } from '#imports'
 import { type RouteLocationRaw } from 'vue-router'
 import { debounce } from 'perfect-debounce'
-import { Input } from '@remindgmbh/nuxt-typo3/dist/runtime/models'
-import { T3SolrModel, useT3Api, useRoute } from '#imports'
+import { navigateTo } from '#app'
+import { useForm } from 'vee-validate'
+import { useI18n } from 'vue-i18n'
 
 export function useT3SolrSearchForm(
     searchForm: Ref<T3SolrModel.Typo3.SearchForm>,
@@ -15,11 +14,11 @@ export function useT3SolrSearchForm(
     const route = useRoute()
     const { handleSubmit } = useForm()
     const { t } = useI18n()
-    const optionGroups = ref<Input.Autocomplete.OptionGroup[]>([])
+    const optionGroups = ref<T3Model.Input.Autocomplete.OptionGroup[]>([])
     const loading = ref(false)
 
-    const query = computed(
-        () => route.query[searchForm.value.search.queryParam]?.toString(),
+    const query = computed(() =>
+        route.query[searchForm.value.search.queryParam]?.toString(),
     )
 
     const placeholder = computed(() => t('solr.placeholder'))
@@ -54,8 +53,8 @@ export function useT3SolrSearchForm(
                 ),
             },
             {
-                name: 'links',
                 label: t('solr.topResults'),
+                name: 'links',
                 options: (suggestions.documents ?? []).map((document) => ({
                     key: document.link ? document.link : document.title,
                     label: document.title,
@@ -99,6 +98,7 @@ export function useT3SolrSearchForm(
         placeholder,
         query,
         submitLabel,
+
         getRoute,
         onInput: debounce(onInput, 300),
         submit,

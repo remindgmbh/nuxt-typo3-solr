@@ -1,11 +1,11 @@
-import type { Typo3 } from '@remindgmbh/nuxt-typo3/dist/runtime/models'
 import type { Document, Facet } from '.'
+import type { T3Model } from '#imports'
 
-export interface SolrPiResults extends Typo3.Content.Data.Header {
+export interface SolrPiResults extends T3Model.Typo3.Content.Data.Header {
     data: {
         query?: string
         count: number
-        pagination: Typo3.Extbase.Pagination
+        pagination: T3Model.Typo3.Extbase.Pagination
         facets: Facet[]
         documents: Document[]
         spellchecking: string[]

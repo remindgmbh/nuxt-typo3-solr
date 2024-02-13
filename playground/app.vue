@@ -25,9 +25,9 @@
                 </template>
             </div>
             <T3SolrSearchForm
-                v-if="currentSearchForm"
-                :search-form="currentSearchForm"
+                v-if="searchForm"
                 default-value=""
+                :search-form="searchForm"
             />
         </T3TopbarLayoutHeader>
         <T3TopbarLayoutContent>
@@ -37,9 +37,9 @@
 </template>
 
 <script setup lang="ts">
-import { useT3Navigation, useT3SolrData, useT3Languages } from '#imports'
+import { useT3Languages, useT3Navigation, useT3SolrData } from '#imports'
 
 const { rootPageNavigation } = useT3Navigation()
-const { currentSearchForm } = useT3SolrData()
+const { searchForm } = useT3SolrData()
 const { availableLanguages } = useT3Languages()
 </script>

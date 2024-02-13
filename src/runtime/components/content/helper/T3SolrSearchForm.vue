@@ -2,20 +2,20 @@
     <form ref="formRef" class="t3-solr-search-form" @submit="submit">
         <T3Autocomplete
             class="t3-solr-search-form__input"
+            :default-value="defaultValue ?? query"
             :disabled="loading"
             :name="inputName"
-            :placeholder="placeholder"
-            :default-value="defaultValue ?? query"
             :option-groups="optionGroups"
+            :placeholder="placeholder"
             @input="onInput"
             @select="onSelect"
         />
         <button
             class="t3-solr-search-form__submit"
-            type="submit"
             :disabled="loading"
+            type="submit"
         >
-            <slot name="submit" :loading="loading">
+            <slot :loading="loading" name="submit">
                 {{ submitLabel }}
             </slot>
         </button>
@@ -23,8 +23,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, toRef } from 'vue'
 import { T3SolrModel, useT3SolrSearchForm } from '#imports'
+import { ref, toRef } from 'vue'
 
 const props = defineProps<{
     searchForm: T3SolrModel.Typo3.SearchForm
@@ -38,8 +38,8 @@ const {
     loading,
     optionGroups,
     placeholder,
-    query,
     submitLabel,
+    query,
     onInput,
     submit,
 } = useT3SolrSearchForm(toRef(() => props.searchForm))
