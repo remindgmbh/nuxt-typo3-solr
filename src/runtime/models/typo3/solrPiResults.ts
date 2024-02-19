@@ -8,6 +8,9 @@ export interface SolrPiResults extends T3Model.Typo3.Content.Data.Header {
         pagination: T3Model.Typo3.Extbase.Pagination
         facets: Facet[]
         documents: Document[]
-        spellchecking: string[]
+        spellCheckingSuggestion?: {
+            label: string
+            link: string
+        }
     }
 }
