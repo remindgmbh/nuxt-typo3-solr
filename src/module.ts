@@ -7,7 +7,6 @@ import {
     defineNuxtModule,
 } from '@nuxt/kit'
 import { name, version } from '../package.json'
-import { defu } from 'defu'
 
 export const CONFIG_KEY = 'typo3Solr'
 
@@ -17,13 +16,8 @@ export default defineNuxtModule({
         name,
         version,
     },
-    setup(options, nuxt) {
+    setup(_options, nuxt) {
         const resolver = createResolver(import.meta.url)
-
-        nuxt.options.runtimeConfig.public[CONFIG_KEY] = defu(
-            nuxt.options.runtimeConfig.public[CONFIG_KEY],
-            options,
-        )
 
         nuxt.options.alias['#nuxt-typo3-solr'] = resolver.resolve('runtime')
 
