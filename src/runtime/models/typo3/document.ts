@@ -4,6 +4,6 @@ export interface Document {
     title: string
     content: string
     link: string
-    image?: T3Model.Typo3.Asset
+    image?: T3Model.Typo3.Asset.Image
     [key: string]: any
 }

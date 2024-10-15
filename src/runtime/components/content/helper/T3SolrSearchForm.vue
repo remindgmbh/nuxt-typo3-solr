@@ -23,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import { T3SolrModel, useT3SolrSearchForm } from '#imports'
+import { type T3SolrModel, useT3SolrSearchForm } from '#imports'
 import { ref, toRef } from 'vue'
 
 const props = defineProps<{

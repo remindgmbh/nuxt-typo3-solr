@@ -16,7 +16,6 @@ export default defineNuxtConfig({
                     baseUrl: '',
                 },
                 baseUrl: '',
-                cookiebotUid: '',
             },
         },
     },
