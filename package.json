@@ -35,13 +35,13 @@
         "@nuxt/kit": "^3.13.2"
     },
     "peerDependencies": {
-        "@remindgmbh/nuxt-typo3": "^5.0.0 || ^0.0.0-development-1728982529-1274d3f5097b9b5522569bcb7d6c6a20a4f744b3"
+        "@remindgmbh/nuxt-typo3": "^5.0.0 || ^0.0.0-development-1728995748-a7a07a398d3cba1acf53749642f6cdb7e2bd0e6a"
     },
     "devDependencies": {
         "@nuxt/module-builder": "^0.8.4",
         "@nuxt/schema": "^3.13.2",
         "@remindgmbh/eslint-config-nuxt": "^2.0.0",
-        "@remindgmbh/nuxt-typo3": "^0.0.0-development-1728982529-1274d3f5097b9b5522569bcb7d6c6a20a4f744b3",
+        "@remindgmbh/nuxt-typo3": "^0.0.0-development-1728995748-a7a07a398d3cba1acf53749642f6cdb7e2bd0e6a",
         "@types/node": "^22.7.5",
         "eslint": "^9.12.0",
         "nuxt": "^3.13.2",

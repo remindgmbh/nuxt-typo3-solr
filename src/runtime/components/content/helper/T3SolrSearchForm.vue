@@ -2,7 +2,7 @@
     <form ref="formRef" class="t3-solr-search-form" @submit="submit">
         <T3Autocomplete
             class="t3-solr-search-form__input"
-            :default-value="defaultValue ?? query"
+            :default-value="defaultValue"
             :disabled="loading"
             :name="inputName"
             :option-groups="optionGroups"
@@ -34,15 +34,18 @@ const props = defineProps<{
 const formRef = ref<HTMLFormElement>()
 
 const {
+    defaultValue,
     inputName,
     loading,
     optionGroups,
     placeholder,
     submitLabel,
-    query,
     onInput,
     submit,
-} = useT3SolrSearchForm(toRef(() => props.searchForm))
+} = useT3SolrSearchForm(
+    toRef(() => props.searchForm),
+    toRef(() => props.defaultValue),
+)
 
 function onSelect() {
     formRef.value?.requestSubmit()
