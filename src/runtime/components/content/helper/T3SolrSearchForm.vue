@@ -1,6 +1,7 @@
 <template>
     <form ref="formRef" class="t3-solr-search-form" @submit="submit">
         <T3Autocomplete
+            :aria-label="inputAriaLabel"
             class="t3-solr-search-form__input"
             :default-value="defaultValue"
             :disabled="loading"
@@ -26,10 +27,13 @@
 import { type T3SolrModel, useT3SolrSearchForm } from '#imports'
 import { ref, toRef } from 'vue'
 
-const props = defineProps<{
+export interface Props {
+    inputAriaLabel?: string
     searchForm: T3SolrModel.Typo3.SearchForm
     defaultValue?: string
-}>()
+}
+
+const props = defineProps<Props>()
 
 const formRef = ref<HTMLFormElement>()
 
