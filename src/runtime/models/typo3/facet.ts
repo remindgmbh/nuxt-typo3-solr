@@ -1,4 +1,4 @@
-import type { FacetOption } from '.'
+import type { FacetOption } from '../typo3'
 
 export interface Facet {
     field: string

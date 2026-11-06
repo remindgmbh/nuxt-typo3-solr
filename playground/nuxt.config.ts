@@ -8,14 +8,17 @@ export default defineNuxtConfig({
     imports: {
         autoImport: false,
     },
-    modules: ['@remindgmbh/nuxt-typo3', '@remindgmbh/nuxt-typo3-solr'],
+    modules: [
+        '@remindgmbh/nuxt-logger',
+        '@remindgmbh/nuxt-typo3',
+        '@remindgmbh/nuxt-typo3-solr',
+    ],
     runtimeConfig: {
         public: {
             typo3: {
                 api: {
                     baseUrl: '',
                 },
-                baseUrl: '',
             },
         },
     },

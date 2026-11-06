@@ -1,4 +1,4 @@
-import type { Document, Facet } from '.'
+import type { Document, Facet } from '../typo3'
 import type { T3Model } from '#imports'
 
 export interface SolrPiResults extends T3Model.Typo3.Content.Data.Header {

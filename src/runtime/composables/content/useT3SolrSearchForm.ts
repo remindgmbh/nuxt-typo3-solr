@@ -1,6 +1,6 @@
 import { type Ref, computed, ref } from 'vue'
 import { type T3Model, type T3SolrModel, useRoute, useT3Api } from '#imports'
-import { type RouteLocationRaw } from 'vue-router'
+import type { RouteLocationRaw } from 'vue-router'
 import { debounce } from 'perfect-debounce'
 import { navigateTo } from '#app'
 import { useForm } from 'vee-validate'

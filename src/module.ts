@@ -5,8 +5,6 @@ import {
     addPlugin,
     createResolver,
     defineNuxtModule,
-    hasNuxtModule,
-    installModule,
 } from '@nuxt/kit'
 import { name, version } from '../package.json'
 
@@ -18,15 +16,14 @@ export default defineNuxtModule({
         name,
         version,
     },
+    moduleDependencies: {
+        '@remindgmbh/nuxt-typo3': {},
+    },
     async setup(_options, nuxt) {
         const resolver = createResolver(import.meta.url)
 
         nuxt.options.alias['@remindgmbh/nuxt-typo3-solr'] =
             resolver.resolve('runtime')
-
-        if (!hasNuxtModule('@remindgmbh/nuxt-typo3')) {
-            await installModule('@remindgmbh/nuxt-typo3')
-        }
 
         addPlugin({
             src: resolver.resolve('runtime/plugins/i18n'),
